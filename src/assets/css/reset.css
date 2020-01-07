@@ -1,0 +1,287 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.4.1
+2010-03-01
+Author: Richard Clark - http://richclarkdesign.com
+*/
+
+/*html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}*/
+
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+
+abbr,
+address,
+cite,
+code,
+
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+
+small,
+strong,
+sub,
+sup,
+var,
+
+b,
+i,
+
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+
+fieldset,
+form,
+label,
+legend,
+
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+
+time,
+mark,
+audio,
+video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+
+
+ul,li{
+    list-style:none;
+}
+body {
+    line-height:1;
+    font-family: "微软雅黑";
+    padding:0;
+    margin:0;
+}
+
+:focus {
+	outline: 1;
+}
+
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote,
+q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    color:#000;
+    text-decoration:none;
+}
+
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted #000;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input,
+select {
+    vertical-align:middle;
+}
+
+/* 滚动条 */
+::-webkit-srollbar-track-piece{background:none;-webkit-border-radius:0;}
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-thumb:vertical{height:50px;background-color:#bbbbbb;-webkit-border-radius:4px;outline:0px solid #ffffff;ouline-offset:-2px;border:2px solid #ffffff;}
+::-webkit-scrollbar-thumb:hover{height:50px;background-color:#999999;-webkit-border-radius:4px;}
+::-webkit-scrollbar-thumb:horizontal{width:50px;background-color:#bbbbbb;-webkit-border-radius:4px;outline:0px solid #ffffff;ouline-offset:-2px;border:2px solid #ffffff;}
+
+
+.hidden-scrollbar::-webkit-scrollbar {display:none}
+
+
+.border-red{
+    border-color:red;
+}
+
+.fl{
+    float:left;
+}
+
+.fr{
+    float:right;
+}
+
+.clearfix{
+    zoom:1;
+}
+
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  font-size:0;
+}
+
+.text-center{
+  text-align:center;
+}
+
+.text-left{
+  text-align:left;
+}
+
+.padding-trans-none{
+  padding-left:0;
+  padding-right:0;
+}
+
+
+.font-bold{
+  font-weight:bold;
+}
+
+.zindex-20000{
+  z-index:20000 !important;
+}
+
+.el-dropdown-menu{
+  z-index:20000 !important;
+}
+
+.color-red{
+  color:red;
+}
+
+
+
+
+
