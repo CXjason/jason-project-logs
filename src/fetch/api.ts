@@ -77,7 +77,13 @@ export default {
 	*/
 	getUpdateProjectLogsList(params){
 		return fetch(urls.updateProjectLogsListUrl,params);
-	}
+	},
+	/*
+		获取项目日志列表
+	*/
+	getProjectList(params){
+		return fetch(urls.projectListUrl,params);
+	},
 
 };
 

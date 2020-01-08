@@ -4,10 +4,12 @@
 			<div class="search-wrapper clearfix">
 				<div class="search-item">
 					项目：
-					<el-select v-model="value" placeholder="请选择" size="mini">
+					<el-select v-model="searchProjectPk" placeholder="请选择" size="mini">
 				    <el-option
-				      label="1"
-				      value="1">
+				    	v-for="item in projectListData"
+				    	:key="item.pk"
+				      :label="item.name"
+				      :value="item.pk">
 				    </el-option>
 				  </el-select>
 				</div>
@@ -63,6 +65,16 @@
 		    </el-table>
 			</div>
 
+			<div class="pagintion-wrapper">
+				<el-pagination
+		      @current-change="paginationChangeFn"
+		      :current-page="currentPage"
+		      :page-size="10"
+		      layout="total, prev, pager, next, jumper"
+		      :total="totalNum">
+		    </el-pagination>
+			</div>
+
 		</div>
 	</div>
 </template>
@@ -77,10 +89,15 @@
 		}
 	})
 	export default class ProjectLogPage extends Vue {
-		private value: number = 1;
+		private searchProjectPk: number | string = "";
 		private projectLogsData: object[] = [];
+		private projectListData: object[] = [];
+		private currentPage: number = 1;
+		private totalNum: number = 0;
 
     mounted(): void {
+
+    	this.fetchProjectList();
 
     	this.fetchUpdateProjectLogsList();
 
@@ -92,12 +109,41 @@
 
     	let projectLogsRes = await this.$api.getUpdateProjectLogsList();
 
+    	console.log("获取项目更新内容列表");
+    	console.log(projectLogsRes);
+
     	if(projectLogsRes.data.code == 0){
 
     		this.projectLogsData = projectLogsRes.data.data;
 
     	};
 
+    }
+
+    /*
+			获取项目列表
+    */
+    async fetchProjectList(): Promise<void>{
+
+    	let projectListRes = await this.$api.getProjectList();
+
+    	console.log("获取项目列表");
+    	console.log(projectListRes);
+
+    	if(projectListRes.data.code == 0){
+
+    		this.projectListData = projectListRes.data.data;
+
+    	};
+
+    }
+
+    /*
+			切换页
+    */
+    async paginationChangeFn(page): void{
+
+    	console.log(page)
     }
 	}
 </script>
@@ -135,6 +181,26 @@
 			height:100%;
 			padding-top:60px;
 			box-sizing:border-box;
+
+
+			.table-list-wrapper{
+				position:relative;
+				height:100%;
+				padding-bottom:40px;
+				box-sizing:border-box;
+			}
+
+			.pagintion-wrapper{
+				position:absolute;
+				left:0;
+				bottom:0;
+				width:100%;
+				height:40px;
+				z-index:10;
+				text-align:center;
+				padding-top:6px;
+				box-sizing:border-box;
+			}
 		}
 
 	}
