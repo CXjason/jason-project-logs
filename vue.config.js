@@ -41,7 +41,7 @@ module.exports = {
         proxy: {
             //配置跨域
             '/indexApi': {
-                target: "http://127.0.0.1:8891/",
+                target: "http://192.168.88.105:8891/",
                 //target: "http://192.168.2.107/",
                 ws:true,
                 changOrigin:true,

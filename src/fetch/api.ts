@@ -84,6 +84,25 @@ export default {
 	getProjectList(params){
 		return fetch(urls.projectListUrl,params);
 	},
+	/*
+		删除项目日志列表
+	*/
+	getRemoteUpdateProjectLogsItem(params){
+		return fetch(urls.getRemoteUpdateProjectLogsItemUrl,params);
+	},
+	/*
+		添加项目日志
+	*/
+	getAddUpdateProjectLogsItem(params){
+		return fetch(urls.getaddUpdateProjectLogsItemUrl,params);
+	},
+	/*
+		编辑修改	
+	*/
+
+	getApdateProjectLogsItem(params){
+		return fetch(urls.getApdateProjectLogsItemUrl,params)
+	}
 
 };
 

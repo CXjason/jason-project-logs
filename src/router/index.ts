@@ -10,7 +10,7 @@ const routes = [
     path: '/home',
     name: 'home',
     component: Home,
-    //redirect:"/home/projectLogPage",
+    redirect:"/home/projectLogPage",
     meta:{
       keepAlive:true
     },
