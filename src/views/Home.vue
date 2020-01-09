@@ -30,15 +30,52 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: 'homePage',
-  components: {
-    HelloWorld
-  }
+import {
+  State,
+  Getter,
+  Action,
+  Mutation,
+  namespace
+} from 'vuex-class';
+
+const userModule = namespace('user');
+
+@Component({
+	components:{
+
+	}
+})
+export default class Home extends Vue {
+	@userModule.Action('setUserInfo') actionSetUserInfo;
+
+
+	mounted():void {
+
+		this.fetchUserList();
+
+	}
+
+
+	async fetchUserList(): void{
+		let userListRes = await this.$api.getUserList();
+    	console.log("获取用户列表");
+    	console.log(userListRes);
+    	if(userListRes.data.code == 0){
+			
+			let data = userListRes.data.data;
+			for(let item of data){
+				if(item["pk"] == 11){
+					let userInfo = item;
+					this.actionSetUserInfo(userInfo)
+				}
+			}
+    	};
+
+	}
 }
+
+
 </script>
 
 

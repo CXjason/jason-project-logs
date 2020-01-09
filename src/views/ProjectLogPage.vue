@@ -101,7 +101,7 @@
 					<el-input v-model="form.update_content" autocomplete="off" style="width: 76%"></el-input>
 				</el-form-item>
 				<el-form-item label="更新人：" style="padding-left: 15px">
-					<el-input v-model="form.update_user_name" autocomplete="off" style="width: 78%"></el-input>
+					<el-input v-model="form.update_user_name" autocomplete="off" style="width: 78%" :disabled="true"></el-input>
 				</el-form-item>
 				<el-form-item label="备注：" style="padding-left: 28px">
 					<el-input v-model="form.aemreks" autocomplete="off" style="width: 80%"></el-input>
@@ -136,7 +136,7 @@
 					<el-input v-model="form.update_content" autocomplete="off" style="width: 76%"></el-input>
 				</el-form-item>
 				<el-form-item label="更新人：" style="padding-left: 15px">
-					<el-input v-model="form.update_user_name" autocomplete="off" style="width: 78%"></el-input>
+					<el-input v-model="form.update_user_name" autocomplete="off" style="width: 78%" :disabled="true"></el-input>
 				</el-form-item>
 				<el-form-item label="备注：" style="padding-left: 28px">
 					<el-input v-model="form.aemreks" autocomplete="off" style="width: 80%"></el-input>
@@ -154,12 +154,26 @@
 <script lang="ts">
 	import { Component,Prop,Vue} from 'vue-property-decorator';
 
+	import {
+		State,
+		Getter,
+		Action,
+		Mutation,
+		namespace
+	} from 'vuex-class';
+
+	const userModule = namespace('user');
+
 	@Component({
 		components:{
 
 		}
 	})
 	export default class ProjectLogPage extends Vue {
+
+		@userModule.Getter('userInfo') getterUserInfo;
+
+
 		private searchProjectPk: number | string = "";
 		private projectLogsData: object[] = [];
 		private projectListData: object[] = [];
@@ -177,15 +191,7 @@
 			update_content: "",
 			aemreks: ""
 		};
-		// private editForm: object = {
-		// 	update_user_name:"",
-		// 	update_user_pk: 1,
-		// 	version: "",
-		// 	project_name: "",
-		// 	project_pk: 1,
-		// 	update_content: "",
-		// 	aemreks: ""
-		// };
+		private pk: number = 0;
 		private editaDialog: boolean = false;//编辑弹框
 		
 
@@ -225,9 +231,7 @@
 
     	console.log("获取项目更新内容列表");
     	console.log(projectLogsRes);
-
     	if(projectLogsRes.data.code == 0){
-
 			this.projectLogsData = projectLogsRes.data.data;
 			this.totalNum = projectLogsRes.data.total;
 
@@ -289,7 +293,6 @@
     async paginationChangeFn(page): void{
 
 		console.log(page);
-		
 		this.fetchUpdateProjectLogsList();
 	}
 	/*
@@ -303,6 +306,7 @@
 		that.form.update_content = row.update_content;
 		that.form.update_user_name =  row.update_user_name;
 		that.form.aemreks = row.aemreks;
+		that.pk = row.pk;
         
 	}
 	/*
@@ -315,6 +319,7 @@
 			version:this.form.version,
 			project_name: this.form.project_name,
 			project_pk: this.form.project_pk,
+			pk: this.pk,
 			update_content: this.form.update_content,
 			aemreks:this.form.aemreks
 
@@ -381,6 +386,10 @@
 			添加
     */
     async addFn(): void{
+
+		this.form.update_user_name = this.getterUserInfo.username;
+		this.form.update_user_pk = this.getterUserInfo.pk;
+
 		this.dialogVisible = true;
 	}
 	

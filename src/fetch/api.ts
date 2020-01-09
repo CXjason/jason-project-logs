@@ -102,6 +102,13 @@ export default {
 
 	getApdateProjectLogsItem(params){
 		return fetch(urls.getApdateProjectLogsItemUrl,params)
+	},
+
+	/*
+		获取用户列表
+	*/
+	getUserList(params){
+		return fetch(urls.getUserListUrl,params)
 	}
 
 };
