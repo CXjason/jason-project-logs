@@ -81,7 +81,6 @@
 
 <script lang="ts">
 	import { Component,Prop,Vue} from 'vue-property-decorator';
-	//import Component from 'vue-class-component';
 
 	@Component({
 		components:{
@@ -94,6 +93,19 @@
 		private projectListData: object[] = [];
 		private currentPage: number = 1;
 		private totalNum: number = 0;
+
+		// 计算属性
+		// get pk1(){
+		// 	return (pk) => {
+		// 		for(let item of this.projectListData){
+		// 			if(item["pk"] == pk){
+		// 				return item.name;
+		// 			}
+		// 		}
+
+		// 		return "";
+		// 	}
+		// }
 
     mounted(): void {
 
